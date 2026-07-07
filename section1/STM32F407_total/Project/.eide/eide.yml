@@ -1,0 +1,210 @@
+version: "4.1"
+name: STM32F407_ProjectTemplate
+type: ARM
+deviceName: null
+packDir: null
+srcDirs: []
+virtualFolder:
+  name: <virtual_root>
+  files: []
+  folders:
+    - name: Common
+      files:
+        - path: ../Common/common.c
+      folders: []
+    - name: Main
+      files:
+        - path: ../Main/main.c
+        - path: ../Main/stm32f4xx_it.c
+      folders: []
+    - name: USER
+      files:
+        - path: ../USER/src/fft.c
+        - path: ../USER/src/audio_analyzer.c
+        - path: ../USER/src/freqmeas.c
+        - path: ../USER/src/ad9833.c
+        - path: ../USER/src/ad9959.c
+        - path: ../USER/src/led.c
+        - path: ../USER/src/w25qxx.c
+        - path: ../USER/src/adc.c
+        - path: ../USER/src/dac.c
+        - path: ../USER/src/dma.c
+        - path: ../USER/src/spi.c
+        - path: ../USER/src/timer.c
+        - path: ../USER/src/uart.c
+        - path: ../USER/src/lcd.c
+        - path: ../USER/src/i2c.c
+        - path: ../USER/src/hmc470.c
+        - path: ../USER/src/pe4302.c
+        - path: ../USER/src/dac7612.c
+        - path: ../USER/src/key.c
+      folders: []
+    - name: DSP_LIB
+      files:
+        - path: ../DSP_LIB/arm_cortexM4lf_math.lib
+      folders: []
+    - name: STM32F4_FWLIB
+      files:
+        - path: ../STM32F4_FWLIB/src/misc.c
+        - path: ../STM32F4_FWLIB/src/stm32f4xx_gpio.c
+        - path: ../STM32F4_FWLIB/src/stm32f4xx_usart.c
+        - path: ../STM32F4_FWLIB/src/stm32f4xx_adc.c
+        - path: ../STM32F4_FWLIB/src/stm32f4xx_dac.c
+        - path: ../STM32F4_FWLIB/src/stm32f4xx_rcc.c
+        - path: ../STM32F4_FWLIB/src/stm32f4xx_spi.c
+        - path: ../STM32F4_FWLIB/src/stm32f4xx_tim.c
+        - path: ../STM32F4_FWLIB/src/stm32f4xx_dma.c
+        - path: ../STM32F4_FWLIB/src/stm32f4xx_fsmc.c
+        - path: ../STM32F4_FWLIB/src/stm32f4xx_i2c.c
+      folders: []
+    - name: Startup_config
+      files:
+        - path: ../Startup_config/system_stm32f4xx.c
+        - path: ../Startup_config/startup_stm32f40_41xxx.s
+      folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: 201edfbfbf4c17dbc37c11381da85e92
+targets:
+  ProjectTemplate:
+    cppPreprocessAttrs:
+      defineList:
+        - STM32F40_41xxx
+        - USE_STDPERIPH_DRIVER
+        - __TARGET_FPU_VFP
+        - __FPU_USED
+        - __FPU_PRESENT
+        - ARM_MATH_CM4
+        - __CC_ARM
+        - ARM_MATH_MATRIX_CHECK
+        - ARM_MATH_ROUNDING
+      incList:
+        - ../Common
+        - ../Startup_config
+        - ../STM32F4_FWLIB/inc
+        - ../USER/inc
+        - ../DSP_LIB
+        - ../DSP_LIB/Include
+        - .cmsis/include
+        - RTE/_ProjectTemplate
+      libList: []
+    excludeList: []
+    settings:
+      debugger: cortex-debug
+    toolchain: AC5
+    toolchainConfigMap:
+      AC5:
+        archExtensions: ""
+        cpuType: Cortex-M4
+        floatingPointHardware: single
+        options:
+          version: 4
+          afterBuildTasks: []
+          asm-compiler:
+            defines: []
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            CXX_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            C_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            c99-mode: true
+            gnu-extensions: true
+            one-elf-section-per-function: true
+            optimization: level-0
+            warnings: all-warnings
+          global:
+            output-debug-info: enable
+            use-microLIB: true
+          linker:
+            $outputTaskExcludes:
+              - .bin
+            output-format: elf
+            ro-base: "0x08000000"
+            rw-base: "0x20000000"
+            xo-base: ""
+        scatterFilePath: ""
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 3
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 1
+              isChecked: true
+              mem:
+                size: "0x20000"
+                startAddr: "0x20000000"
+              noInit: false
+              tag: IRAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x10000"
+                startAddr: "0x10000000"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 3
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 1
+              isChecked: true
+              isStartup: true
+              mem:
+                size: "0x80000"
+                startAddr: "0x8000000"
+              tag: IROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: IROM
+        useCustomScatterFile: false
+    uploadConfigMap:
+      JLink:
+        baseAddr: ""
+        bin: ""
+        cpuInfo:
+          cpuName: "null"
+          vendor: "null"
+        otherCmds: ""
+        proType: 1
+        speed: 8000
+    uploader: JLink
